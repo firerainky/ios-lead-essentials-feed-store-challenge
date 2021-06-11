@@ -69,7 +69,6 @@ public final class CoreDataFeedStore: FeedStore {
 					managed.imageDescription = local.description
 					managed.location = local.location
 					managed.url = local.url
-//					managed.cache = managedCache
 					return managed
 				})
 				try context.save()
