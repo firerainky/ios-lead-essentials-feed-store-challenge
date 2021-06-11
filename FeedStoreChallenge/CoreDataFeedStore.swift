@@ -74,11 +74,7 @@ public final class CoreDataFeedStore: FeedStore {
 				try context.save()
 				completion(nil)
 			} catch {
-				let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)
-				request.returnsObjectsAsFaults = false
-				if let cache = try? context.fetch(request).first {
-					context.delete(cache)
-				}
+				context.rollback()
 				completion(error)
 			}
 		}
